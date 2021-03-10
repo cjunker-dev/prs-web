@@ -66,11 +66,11 @@ public class RequestController {
 	public Request submitReview(@RequestBody Request request) {
 		//if total is less than 50, change status to approved,
 		if (request.getTotal() <= 50) {
-			request.setStatus("approved");
+			request.setStatus("Approved");
 		}
 		//else change status to review
 		else {
-			request.setStatus("review");
+			request.setStatus("Review");
 		}
 		//set submittedDate as currentDate
 		//sql format: 'YYYY-MM-DD hh:mm:ss.mmm'
@@ -88,7 +88,7 @@ public class RequestController {
 		List<Request> requestList = requestRepo.findAll();
 		List<Request> reviewable = new ArrayList<>();
 		for (Request request: requestList) {
-			if (request.getStatus().equalsIgnoreCase("review") && request.getUser().getId() != id) {
+			if (request.getStatus().equalsIgnoreCase("Review") && request.getUser().getId() != id) {
 				//add item to requestList
 				reviewable.add(request);
 			}

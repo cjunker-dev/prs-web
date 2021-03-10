@@ -53,4 +53,10 @@ public class UserController {
 		//where is an example of this?
 		return userRepo.findByUsernameAndPassword(u.getUsername(), u.getPassword());
 	}
+	
+	@GetMapping("")
+	public User login(@RequestParam String username, @RequestParam String password) {
+		// SELECT * from USER where username = "" AND password = ""
+		return userRepo.findByUsernameAndPassword(username, password);
+	}
 }
